@@ -1,0 +1,16 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: spring_cassandra
+      connection:
+        init-query-timeout: 10s
+        connect-timeout: 10s
+      request:
+        timeout: 10s
+      schema-action: CREATE_IF_NOT_EXISTS
+      local-datacenter: datacenter1
+
+graphql:
+  spqr:
+    gui:
+      enabled: true
