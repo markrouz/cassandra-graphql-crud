@@ -14,6 +14,7 @@ import org.mgerman.cgc.repositories.UserRepository;
 import org.mgerman.cgc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest
@@ -27,6 +28,7 @@ public class UserServiceIntegrationTest extends AbstractCassandraIntegrationTest
   private UserRepository userRepository;
 
   @Test
+  @WithMockUser(authorities = "ADMIN")
   public void createUserTest() {
     UUID randomUUID = UUID.randomUUID();
     UserDto testUserDto = createUserDto(randomUUID);
@@ -38,6 +40,7 @@ public class UserServiceIntegrationTest extends AbstractCassandraIntegrationTest
   }
 
   @Test
+  @WithMockUser(authorities = "ADMIN")
   public void getUserByIdTest() {
     UUID userUUID = UUID.randomUUID();
     UserDto testUserDto = createUserDto(userUUID);
@@ -50,6 +53,7 @@ public class UserServiceIntegrationTest extends AbstractCassandraIntegrationTest
   }
 
   @Test
+  @WithMockUser(authorities = "ADMIN")
   public void updateUserTest() {
     UUID userUUID = UUID.randomUUID();
     UserDto testUserDto = createUserDto(userUUID);
@@ -66,6 +70,7 @@ public class UserServiceIntegrationTest extends AbstractCassandraIntegrationTest
   }
 
   @Test
+  @WithMockUser(authorities = "ADMIN")
   public void deleteUserTest() {
     UUID userUUID = UUID.randomUUID();
     UserDto testUserDto = createUserDto(userUUID);
