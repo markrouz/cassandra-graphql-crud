@@ -2,13 +2,18 @@ package org.mgerman.cgc.dto;
 
 import java.util.UUID;
 import lombok.Builder;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = "password")
 @Builder
 public class UserDto {
   private UUID id;
   private String email;
+  private String password;
   private String firstName;
   private String lastName;
   private byte[] avatar;

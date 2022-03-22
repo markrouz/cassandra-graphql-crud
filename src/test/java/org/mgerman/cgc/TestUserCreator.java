@@ -13,6 +13,7 @@ public class TestUserCreator {
     return UserDto.builder()
         .id(uuid)
         .email("email")
+        .password("password")
         .firstName("firstName")
         .lastName("lastName")
         .avatar(Bytes.fromHexString("0x11").array())

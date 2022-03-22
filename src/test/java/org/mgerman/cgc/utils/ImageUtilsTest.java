@@ -11,14 +11,14 @@ public class ImageUtilsTest {
 
   @Test
   public void parseImageTest() throws IOException {
-    ByteBuffer byteBuffer = ImageUtils.convertImageToByteBuffer(
+    ByteBuffer byteBuffer = JpgUtils.convertImageToByteBuffer(
         "src/main/resources/avatars/john.jpg");
     assertTrue(byteBuffer.hasArray());
   }
 
   @Test
   public void parseNonExistingImageTest() {
-    assertThrows(IOException.class, () -> ImageUtils.convertImageToByteBuffer("some/path"));
+    assertThrows(IOException.class, () -> JpgUtils.convertImageToByteBuffer("some/path"));
   }
 
 }

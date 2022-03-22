@@ -19,6 +19,7 @@ import org.mgerman.cgc.services.impl.UserServiceImpl;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
@@ -29,6 +30,9 @@ public class UserServiceImplTest {
   @Mock
   private UserMapper userMapper;
 
+  @Mock
+  private BCryptPasswordEncoder bCryptPasswordEncoder;
+
   @InjectMocks
   private UserServiceImpl userService;
 
@@ -38,6 +42,7 @@ public class UserServiceImplTest {
     UserDto testUserDto = createUserDto(randomUUID);
     User testUser = createUser(randomUUID);
     when(userRepository.save(any())).thenReturn(testUser);
+    when(userMapper.dtoToUser(any())).thenReturn(testUser);
     when(userMapper.userToDto(any())).thenReturn(testUserDto);
 
     UserDto createdUserDto = userService.createUser(testUserDto);

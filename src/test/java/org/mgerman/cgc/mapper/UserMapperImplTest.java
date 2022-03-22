@@ -49,6 +49,7 @@ public class UserMapperImplTest {
     User user = userMapper.dtoToUser(userDto);
     assertNotNull(userDto);
     assertEquals(user.getId(), userDto.getId());
+    assertEquals(user.getPassword(), userDto.getPassword());
     assertEquals(user.getEmail(), userDto.getEmail());
     assertEquals(user.getFirstName(), userDto.getFirstName());
     assertArrayEquals(user.getAvatar().array(), userDto.getAvatar());

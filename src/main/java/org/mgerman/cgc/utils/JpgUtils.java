@@ -8,16 +8,16 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import javax.imageio.ImageIO;
 
-public class ImageUtils {
+public class JpgUtils {
 
-  private ImageUtils() {
+  private JpgUtils() {
     throw new IllegalStateException("Utility class");
   }
 
   public static ByteBuffer convertImageToByteBuffer(String pathToImage) throws IOException {
     BufferedImage bImage = ImageIO.read(new File(pathToImage));
     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    ImageIO.write(bImage, "jpg", bos );
+    ImageIO.write(bImage, "jpg", bos);
     return Bytes.fromHexString(Bytes.toHexString(bos.toByteArray()));
   }
 

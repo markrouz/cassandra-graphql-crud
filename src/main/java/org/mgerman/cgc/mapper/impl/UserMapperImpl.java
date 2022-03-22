@@ -33,6 +33,7 @@ public class UserMapperImpl implements UserMapper {
     return User.builder()
         .id(userDto.getId())
         .email(userDto.getEmail())
+        .password(userDto.getPassword())
         .firstName(userDto.getFirstName())
         .lastName(userDto.getLastName())
         .avatar(Bytes.fromHexString(Bytes.toHexString(userDto.getAvatar())))

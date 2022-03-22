@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.mgerman.cgc.enitities.User;
 import org.mgerman.cgc.repositories.UserRepository;
-import org.mgerman.cgc.utils.ImageUtils;
+import org.mgerman.cgc.utils.JpgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -29,7 +29,7 @@ public class CassandraIntegrationCrudTest extends AbstractCassandraIntegrationTe
   void givenValidUser_whenSavingIt_thenUserIsSaved() throws IOException {
     UUID johnUUID = UUID.randomUUID();
     var john = new User(johnUUID, "john@gmail.com", "john", "John", "Doe",
-        ImageUtils.convertImageToByteBuffer("src/main/resources/avatars/john.jpg"), "USER");
+        JpgUtils.convertImageToByteBuffer("src/main/resources/avatars/john.jpg"), "USER");
 
     userRepository.save(john);
 
@@ -42,7 +42,7 @@ public class CassandraIntegrationCrudTest extends AbstractCassandraIntegrationTe
   void givenExistingUser_whenUpdatingIt_thenUserIsUpdated() throws IOException {
     UUID johnUUID = UUID.randomUUID();
     var john = new User(johnUUID, "john@gmail.com", "john", "John", "Doe",
-        ImageUtils.convertImageToByteBuffer("src/main/resources/avatars/john.jpg"), "USER");
+        JpgUtils.convertImageToByteBuffer("src/main/resources/avatars/john.jpg"), "USER");
     User existingUser = userRepository.save(john);
 
     existingUser.setEmail("john1@gmail.com");
@@ -57,7 +57,7 @@ public class CassandraIntegrationCrudTest extends AbstractCassandraIntegrationTe
   void givenExistingUser_whenDeletingIt_thenUserIsDeleted() throws IOException {
     UUID johnUUID = UUID.randomUUID();
     var john = new User(johnUUID, "john@gmail.com", "john", "John", "Doe",
-        ImageUtils.convertImageToByteBuffer("src/main/resources/avatars/john.jpg"), "USER");
+        JpgUtils.convertImageToByteBuffer("src/main/resources/avatars/john.jpg"), "USER");
     User existingUser = userRepository.save(john);
 
     userRepository.delete(existingUser);
